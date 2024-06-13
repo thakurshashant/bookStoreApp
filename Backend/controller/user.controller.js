@@ -1,24 +1,28 @@
-// we define function in controller and call the function in route
+import User from '../model/user.model.js';
+import bcryptjs from 'bcryptjs';
 
-import User from '../models/user.model.js';
-
-
-export const signup=(req, res)=>{
+export const signup = async (req, res) => {
     try {
-        const {fullname , email , password}=req.body; //here we are accessing for name , email of user
-        const user=User.findOne({email}) //checking if the user is already present in the database
-        if(user){
-            return res.status(400).json({message:"User already exists"})
+        const { fullname, email, password } = req.body; // Accessing fullname, email, and password from the request body
+
+        // Checking if the user is already present in the database
+        const user = await User.findOne({ email });
+        if (user) {
+            return res.status(400).json({ message: "User already exists" });
         }
-        const createdUser=new User({
+        const hashPassword = await bcryptjs.hash(password, 10); // Hashing the password so if the access of database is with others password still remains secure
+        // Creating a new user
+        const createdUser = new User({
             fullname,
             email,
-            password
-        })
-        createdUser.save();  //saving the new user data
-        res.status(201).json({message:"User created successfully"});
+            password :hashPassword //saving hashed password
+        });
+
+        // Saving the new user data
+        await createdUser.save();
+        res.status(201).json({ message: "User created successfully" });
     } catch (error) {
-        console.log("Error:"+ error.message);
-        res.status(500).json({message: "Internal server error"})
+        console.log("Error: " + error.message);
+        res.status(500).json({ message: "Internal server error" });
     }
-}
+};
