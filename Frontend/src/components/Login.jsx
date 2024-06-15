@@ -20,15 +20,20 @@ function Login() {
     .then((res) =>{
       console.log(res.data)
       if(res.data){
-        toast.success("Login Successfully");
+        toast.success("Loggedin Successfully");
+        document.getElementById("my_modal_3").close();
+        setTimeout(()=>{
+          window.location.reload();
+          localStorage.setItem("user", JSON.stringify(res.data.user));
+        } , 1000);
+         
       }
-      localStorage.setItem("user", JSON.stringify(res.data.user));
     })
     .catch((err) =>{
       if(err.response){
         console.log(err);
-        toast.error("Error: " + err.response.data.message);
-      }
+        toast.error("Error: " + "User not found");
+        setTimeout(()=>{}, 2000);}
       else if (err.request) {
         console.error('Error Request:', err.request);
         toast.error("No response from server. Please try again.");
@@ -45,7 +50,7 @@ function Login() {
   <div className="modal-box">
     <form  onSubmit={handleSubmit(onSubmit)} method="dialog">
       {/* if there is a button in form, it will close the modal */}
-      <Link to="/" className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</Link>
+      <Link to="/" className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2" onClick={()=>document.getElementById("my_modal_3").close()}>✕</Link>
     <h3 className="font-bold text-lg">Login</h3>
     {/* emial */}
     <div className="mt-4 space-y-2">
