@@ -25,7 +25,6 @@ Readify is a MERN (MongoDB, Express, React, Node.js) project designed for [brief
 - MongoDB
 - bcryptjs
 - cors
-- dotenv
 - mongoose
 - nodemon
 
@@ -34,10 +33,7 @@ Readify is a MERN (MongoDB, Express, React, Node.js) project designed for [brief
 - React.js
 - Axios
 - React Router DOM
-- React Hook Form
 - React Hot Toast
-- React Slick
-- Slick Carousel
 - Vite (for development)
 
 ## Backend Installation and Setup
@@ -46,3 +42,40 @@ Readify is a MERN (MongoDB, Express, React, Node.js) project designed for [brief
    ```bash
    git clone https://github.com/thakurshashant/bookStoreApp.git
    cd bookstore
+2. Navigate to the backend directory:
+   ```bash
+   cd backend
+3. Install dependencies:
+   ```bash
+   npm install
+4. Set up environment variables:
+   Create a .env file based on .env.example and configure necessary variables.
+5. Start the backend server:
+   ```bash
+   npm start
+
+## Frontend Installation and Setup
+1. Navigate to the frontend directory:
+   ```bash
+   cd ../frontend
+
+2. Install dependencies:
+   ```bash
+   npm install
+3. Set up environment variables:
+   Create a .env file based on .env.example and configure necessary variables.
+4. Start the frontend development server:
+   ```bash
+   npm run dev
+
+
+
+## License
+
+This project is licensed under the ISC License. See the [LICENSE](./LICENSE) file for details.
+
+---
+
+© 2024 Shashant Thakur. All Rights Reserved.
+
+
