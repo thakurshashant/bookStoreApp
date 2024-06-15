@@ -30,16 +30,10 @@ function Login() {
       }
     })
     .catch((err) =>{
-      if(err.response){
+      f (err.response) {
         console.log(err);
         toast.error("Error: " + err.response.data.message);
-        setTimeout(()=>{}, 2000);}
-      else if (err.request) {
-        console.error('Error Request:', err.request);
-        toast.error("No response from server. Please try again.");
-      } else {
-        console.error('General Error:', err.message);
-        toast.error("An error occurred. Please try again.");
+        setTimeout(() => {}, 2000);
       }
     })
   }
