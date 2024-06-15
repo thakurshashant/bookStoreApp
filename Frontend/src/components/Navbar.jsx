@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Login from './Login';
-
+import Logout from './Logout';
 
 function Navbar() {
 
