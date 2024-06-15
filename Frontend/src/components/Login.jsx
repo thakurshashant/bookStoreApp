@@ -32,7 +32,7 @@ function Login() {
     .catch((err) =>{
       if(err.response){
         console.log(err);
-        toast.error("Error: " + "User not found");
+        toast.error("Error: " + err.response.data.message);
         setTimeout(()=>{}, 2000);}
       else if (err.request) {
         console.error('Error Request:', err.request);
